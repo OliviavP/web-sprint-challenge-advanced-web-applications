@@ -18,8 +18,12 @@ export default function App() {
 
   // ✨ Research `useNavigate` in React Router v.6
   const navigate = useNavigate()
-  const redirectToLogin = () => { /* ✨ implement */ }
-  const redirectToArticles = () => { /* ✨ implement */ }
+  const redirectToLogin = () => {
+    /* ✨ implement */
+  }
+  const redirectToArticles = () => {
+    /* ✨ implement */
+  }
 
   const logout = () => {
     // ✨ implement
@@ -36,6 +40,11 @@ export default function App() {
     // On success, we should set the token to local storage in a 'token' key,
     // put the server success message in its proper state, and redirect
     // to the Articles screen. Don't forget to turn off the spinner!
+    const { push } = useHistory()
+    const [cred, setCred] = useState({
+      username: '',
+      password: '',
+    })
   }
 
   const getArticles = () => {
@@ -49,7 +58,7 @@ export default function App() {
     // Don't forget to turn off the spinner!
   }
 
-  const postArticle = article => {
+  const postArticle = (article) => {
     // ✨ implement
     // The flow is very similar to the `getArticles` function.
     // You'll know what to do! Use log statements or breakpoints
@@ -61,7 +70,7 @@ export default function App() {
     // You got this!
   }
 
-  const deleteArticle = article_id => {
+  const deleteArticle = (article_id) => {
     // ✨ implement
   }
 
@@ -70,21 +79,32 @@ export default function App() {
     <>
       <Spinner />
       <Message />
-      <button id="logout" onClick={logout}>Logout from app</button>
-      <div id="wrapper" style={{ opacity: spinnerOn ? "0.25" : "1" }}> {/* <-- do not change this line */}
+      <button id='logout' onClick={logout}>
+        Logout from app
+      </button>
+      <div id='wrapper' style={{ opacity: spinnerOn ? '0.25' : '1' }}>
+        {' '}
+        {/* <-- do not change this line */}
         <h1>Advanced Web Applications</h1>
         <nav>
-          <NavLink id="loginScreen" to="/">Login</NavLink>
-          <NavLink id="articlesScreen" to="/articles">Articles</NavLink>
+          <NavLink id='loginScreen' to='/'>
+            Login
+          </NavLink>
+          <NavLink id='articlesScreen' to='/articles'>
+            Articles
+          </NavLink>
         </nav>
         <Routes>
-          <Route path="/" element={<LoginForm />} />
-          <Route path="articles" element={
-            <>
-              <ArticleForm />
-              <Articles />
-            </>
-          } />
+          <Route path='/' element={<LoginForm />} />
+          <Route
+            path='articles'
+            element={
+              <>
+                <ArticleForm />
+                <Articles />
+              </>
+            }
+          />
         </Routes>
         <footer>Bloom Institute of Technology 2022</footer>
       </div>
